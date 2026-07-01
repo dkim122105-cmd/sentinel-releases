@@ -1,0 +1,80 @@
+<!doctype html>
+<!--
+  Sentinel — email-verified landing page.
+  Supabase redirects here after a user confirms their email (Auth site_url).
+  Deployed to GitHub Pages on the public sentinel-releases repo:
+  https://dkim122105-cmd.github.io/sentinel-releases/verified/
+  To change it: edit this file, then redeploy the copy in sentinel-releases.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Email verified — Sentinel</title>
+    <style>
+      :root {
+        --bg: #16161c;
+        --card: #1e1e27;
+        --text: #f3f3f6;
+        --muted: rgba(255, 255, 255, 0.55);
+        --accent: #6e8bff;
+        --hairline: rgba(255, 255, 255, 0.1);
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .card {
+        width: 100%;
+        max-width: 400px;
+        background: var(--card);
+        border: 1px solid var(--hairline);
+        border-radius: 16px;
+        padding: 40px 32px;
+        text-align: center;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+      }
+      .check {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: rgba(110, 139, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .check svg { width: 34px; height: 34px; stroke: var(--accent); }
+      h1 { font-size: 22px; font-weight: 640; margin: 0 0 10px; }
+      p { font-size: 14.5px; line-height: 1.55; color: var(--muted); margin: 0; }
+      .brand {
+        margin-top: 28px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+      </div>
+      <h1>Email verified</h1>
+      <p>You're all set. You can close this tab and log in to Sentinel with your email and password.</p>
+      <div class="brand">Sentinel</div>
+    </main>
+  </body>
+</html>
