@@ -12,6 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>Email verified — Fossick</title>
+    <script>
+      // Supabase's confirm redirect lands here with a live session in the URL
+      // fragment (#access_token=…&refresh_token=…). This page never uses it,
+      // so: (1) scrub it from the address bar/history before it can persist,
+      // (2) revoke the session server-side so the tokens are dead even if the
+      // original URL was captured somewhere (synced history, shared machine).
+      // The anon key is public by design — it only reaches auth endpoints.
+      (function () {
+        var hash = location.hash;
+        if (!hash) return;
+        history.replaceState(null, "", location.pathname + location.search);
+        var m = hash.match(/access_token=([^&]+)/);
+        if (!m) return;
+        fetch("https://lrghsitbsjzcpqqhbncc.supabase.co/auth/v1/logout?scope=local", {
+          method: "POST",
+          headers: {
+            apikey:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxyZ2hzaXRic2p6Y3BxcWhibmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyNjYyMDcsImV4cCI6MjA5Nzg0MjIwN30.zPJ9Ti-sbhFffCd4UdrqLG-Bz5HuUTJSfyq7kc7K0d4",
+            Authorization: "Bearer " + decodeURIComponent(m[1]),
+          },
+        }).catch(function () {});
+      })();
+    </script>
     <style>
       :root {
         --bg: #16161c;
